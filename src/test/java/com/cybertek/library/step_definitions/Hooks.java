@@ -1,6 +1,7 @@
 package com.cybertek.library.step_definitions;
 
 import com.cybertek.library.pages.DashBoardPage;
+import com.cybertek.library.utilities.common.Environment;
 import com.cybertek.library.utilities.db.DBUtils;
 import com.cybertek.library.utilities.ui.Driver;
 import io.cucumber.java.After;
@@ -27,6 +28,13 @@ public class Hooks {
         DBUtils.destroy();
     }
 
+    @Before
+    public void setUp(Scenario scenario){
+        if(scenario.isFailed()) {
+            Driver.getDriver().get(Environment.getProperty("url"));
+        }
+    }
+
     @After
     public void tearDownScenario(Scenario scenario) {
 
@@ -38,7 +46,7 @@ public class Hooks {
            if (scenario.isFailed()) {
                byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
                scenario.attach(screenshot, "image/png", "Screenshot " + scenario.getName());
-//
+               Driver.closeDriver();
 //            An Attempt on taking gif images
 //            GifWebDriver gifDriver =(GifWebDriver)Driver.getDriver();
 //            byte[] gif = ((TakesScreenshot) gifDriver).getScreenshotAs(OutputType.BYTES);

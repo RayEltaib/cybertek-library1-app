@@ -44,3 +44,7 @@ Feature: Login with different users
       | librarian21@library | aZ849tSZ | Test Librarian 21 |
       | librarian22@library | bJRnAAyp | Test Librarian 22 |
 
+  @smoke @regression
+  Scenario: Terminate Browser
+    Then I close the browser
+

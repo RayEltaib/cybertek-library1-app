@@ -1,9 +1,10 @@
+@Tc_5
 Feature: Table columns names
 
 #  Background: User is on the right url
 #    Given I am on the login page
 
-  @Tc_5 @librarians
+  @librarians
   Scenario: Table columns names
     Given I am on the login page
     When I login as a Librarian
@@ -15,3 +16,7 @@ Feature: Table columns names
       | Email      |
       | Group      |
       | Status     |
+
+  @smoke @regression
+  Scenario: Terminate Browser
+    Then I close the browser

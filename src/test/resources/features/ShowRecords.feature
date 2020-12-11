@@ -1,7 +1,7 @@
+@Tc_4
 Feature: Show records functionality
 
-
-  @Tc_4 @librarians
+  @librarians
   Scenario: Verify default values in users page
     Given I am on the login page
     When I login as a Librarian
@@ -15,6 +15,10 @@ Feature: Show records functionality
     | 100 |
     | 200 |
     | 500 |
+
+  @smoke @regression
+  Scenario: Terminate Browser
+    Then I close the browser
 
 
 

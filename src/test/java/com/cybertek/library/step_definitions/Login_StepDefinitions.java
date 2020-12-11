@@ -113,7 +113,7 @@ public class Login_StepDefinitions extends BaseStep{
         waitTillClickable(dashboardPage.accountHolderName,20);
         String accountHolder = dashboardPage.accountHolderName.getText();
 
-        if (accountHolder == null){
+        if (accountHolder.equals("")){
             waitTillClickable(dashboardPage.accountHolderName,20);
             accountHolder = dashboardPage.accountHolderName.getText();
         }
@@ -123,4 +123,8 @@ public class Login_StepDefinitions extends BaseStep{
 
     }
 
+    @When("I login using data from excel")
+    public void i_login_using_data_from_excel() {
+
+    }
 }

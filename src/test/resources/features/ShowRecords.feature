@@ -9,7 +9,7 @@ Feature: Show records functionality
     Then show records default value should be 10
     And show records should have following options:
     | 5   |
-    | 15  |
+    | 10  |
     | 15  |
     | 50  |
     | 100 |

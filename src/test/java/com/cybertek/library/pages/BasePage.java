@@ -29,7 +29,7 @@ public abstract class BasePage {
     public WebElement logOutButton;
 
     public void navigateTo(String link){
-        BrowserUtils.waitTillClickable(dashboardLink,20);
+        BrowserUtils.waitTillClickable(dashboardLink,5);
         switch (link) {
             case "Dashboard":
                 dashboardLink.click();
@@ -49,7 +49,7 @@ public abstract class BasePage {
     }
     public  void logOut(){
 
-            BrowserUtils.waitTillClickable(accountHolderName, 20);
+            BrowserUtils.waitTillClickable(accountHolderName, 5);
             accountHolderName.click();
             logOutButton.click();
 

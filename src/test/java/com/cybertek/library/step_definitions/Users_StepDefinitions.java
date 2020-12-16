@@ -16,7 +16,7 @@ public class Users_StepDefinitions {
 
     @Then("table should have following column names:")
     public void table_should_have_following_column_names(List<String> names) {
-        waitForVisibility(usersPage.showRecords,20);
+        waitForVisibility(usersPage.showRecords,5);
         List<String> tableHeaders = getElementsText(usersPage.usersTableHeaders);
 
             assertEquals(names, tableHeaders);

@@ -31,7 +31,7 @@ public class PageNavigation_StepDefinitions extends BaseStep {
     @Then("show records default value should be {int}")
     public void show_records_default_value_should_be(Integer int1) {
 
-        waitTillClickable(usersPage.showRecords, 20);
+        waitTillClickable(usersPage.showRecords, 5);
         Integer usersPerPage = Integer.parseInt(getDropDownSelection(usersPage.showRecords));
         assertEquals(int1,usersPerPage);
 

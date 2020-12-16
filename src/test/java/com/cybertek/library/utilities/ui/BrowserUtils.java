@@ -17,15 +17,15 @@ public class BrowserUtils {
 
     public static void waits(int sec){
         try{
-            Thread.sleep(1000*sec);
+            Thread.sleep(1000L *sec);
         }catch(InterruptedException e) {
             e.printStackTrace();
         }
     }
 
     /**
-     * @param element
-     * @param timeToWaitInSeconds
+     * @param element .
+     * @param timeToWaitInSeconds .
      * @return wait till element is visible
      * */
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSeconds){
@@ -62,29 +62,22 @@ public class BrowserUtils {
 
     public static String getDropDownSelection(WebElement element){
         Select select = new Select(element);
-        String selection = select.getFirstSelectedOption().getText();
-        return selection;
+        return select.getFirstSelectedOption().getText();
     }
 
     public static List<String> getDropDownOptions(WebElement element){
         Select select= new Select(element);
         List<WebElement> elements = select.getOptions();
-        List<String> elementsText = getElementsText(elements);
-        return elementsText;
+        return getElementsText(elements);
     }
 
     public static WebElement fluentWait(final WebElement webElement, int timeInSec) {
-        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
+        FluentWait<WebDriver> wait = new FluentWait<>(Driver.getDriver())
                 .withTimeout(Duration.ofSeconds(timeInSec))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(NoSuchElementException.class);
 
-        WebElement element = wait.until(new Function<WebDriver, WebElement>() {
-            public WebElement apply(WebDriver driver) {
-                return webElement;
-            }
-        });
-        return element;
+        return wait.until((Function<WebDriver, WebElement>) driver -> webElement);
     }
 
 

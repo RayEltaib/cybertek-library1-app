@@ -44,12 +44,14 @@ public class Login_StepDefinitions extends BaseStep{
         loginpage.emailElement.sendKeys(username);
         loginpage.passwordElement.sendKeys(password);
         loginpage.signInButton.click();
+        waitForVisibility(loginpage.accountHolderName,5);
+        assertTrue(loginpage.accountHolderName.isDisplayed());
     }
 
     @Then("{string} should be displayed")
     public void should_be_displayed(String string) {
 
-        waitForVisibility(dashboardPage.accountHolderName, 20);
+        waitForVisibility(dashboardPage.accountHolderName, 5);
         String errorMessage = "Account holder name was not displayed thus test failed";
         assertTrue(errorMessage,dashboardPage.accountHolderName.isDisplayed());
 
@@ -66,6 +68,8 @@ public class Login_StepDefinitions extends BaseStep{
         loginpage.emailElement.sendKeys(username);
         loginpage.passwordElement.sendKeys(password);
         loginpage.signInButton.click();
+        waitForVisibility(loginpage.accountHolderName, 5);
+        assertTrue(loginpage.accountHolderName.isDisplayed());
 
     }
 
@@ -87,7 +91,7 @@ public class Login_StepDefinitions extends BaseStep{
     @And("there should be {int} users")
     public void there_should_be_users(Integer expectedCount) {
 
-        waitForVisibility(dashboardPage.usersCount, 20);
+        waitForVisibility(dashboardPage.usersCount, 5);
         String users = dashboardPage.usersCount.getText();
 
         Integer usersCount = Integer.parseInt(users);
@@ -101,20 +105,22 @@ public class Login_StepDefinitions extends BaseStep{
 
     @When("I login using {string} and {string}")
     public void i_login_using_and(String email, String password) {
-        waitForVisibility(loginpage.emailElement, 20);
+        waitForVisibility(loginpage.emailElement, 5);
         loginpage.emailElement.sendKeys(email);
         loginpage.passwordElement.sendKeys(password);
         loginpage.signInButton.click();
+        waitForVisibility(loginpage.accountHolderName,5);
+        assertTrue(loginpage.accountHolderName.isDisplayed());
     }
 
     @Then("account holder name should be {string}")
     public void account_holder_name_should_be(String name) {
 
-        waitTillClickable(dashboardPage.accountHolderName,20);
+        waitTillClickable(dashboardPage.accountHolderName,5);
         String accountHolder = dashboardPage.accountHolderName.getText();
 
         if (accountHolder.equals("")){
-            waitTillClickable(dashboardPage.accountHolderName,20);
+            waitTillClickable(dashboardPage.accountHolderName,5);
             accountHolder = dashboardPage.accountHolderName.getText();
         }
 

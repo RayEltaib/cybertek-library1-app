@@ -27,7 +27,7 @@
                     <includes>
                         <include>**/*CukesRunner.java</include>
                     </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
+                    <testFailureIgnore>false</testFailureIgnore>
                     <parallel>classes</parallel>
                     <threadCount>2</threadCount>
                     <forkCount>2C</forkCount>
